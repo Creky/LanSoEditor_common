@@ -1,29 +1,14 @@
 package com.lansosdk.videoplayer;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.Resources;
-import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.Surface;
-import android.view.TextureView.SurfaceTextureListener;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.MediaController;
-import android.widget.TableLayout;
+
+import com.lansosdk.box.LSLog;
 
 import java.io.IOException;
-import java.util.Map;
 
 
 /**
@@ -35,7 +20,6 @@ import java.util.Map;
  *
  */
 public class VPlayer {
-    private String TAG = "VPlayer";
     private Uri mUri;
 
     // all possible internal states
@@ -60,6 +44,9 @@ public class VPlayer {
     
     private VideoPlayer.OnPlayerVideoSizeChangedListener mOnSizeChangedListener;
     private VideoPlayer.OnPlayerCompletionListener mOnCompletionListener;
+    private VideoPlayer.OnPlayeFrameUpdateListener mOnPlayerFrameUpdateListener;
+
+
     private VideoPlayer.OnPlayerPreparedListener mOnPreparedListener;
     private VideoPlayer.OnPlayerErrorListener mOnErrorListener;
     private VideoPlayer.OnPlayerInfoListener mOnInfoListener;
@@ -122,7 +109,7 @@ public class VPlayer {
    }
     public void prepareAsync() {
         if (mUri == null) {
-        	Log.e(TAG,"mUri==mull, open video error.");
+            LSLog.e("mUri==mull, open video error.");
             return;
         }
         AudioManager am = (AudioManager) mAppContext.getSystemService(Context.AUDIO_SERVICE);
@@ -136,6 +123,7 @@ public class VPlayer {
             mMediaPlayer.setOnInfoListener(mInfoListener);
             mMediaPlayer.setOnBufferingUpdateListener(mBufferingUpdateListener);
             mMediaPlayer.setOnSeekCompleteListener(mOnSeekCompleteListener);
+            mMediaPlayer.setOnPlayeFrameUpdateListener(mOnPlayerFrameUpdateListener);
             
             mCurrentBufferPercentage = 0;
             mMediaPlayer.setDataSource(mAppContext, mUri);
@@ -144,12 +132,12 @@ public class VPlayer {
             mMediaPlayer.prepareAsync();
             mCurrentState = STATE_PREPARING;
         } catch (IOException ex) {
-            Log.w(TAG, "Unable to open content: " + mUri, ex);
+            LSLog.e( "Unable to open content: " + mUri);
             mCurrentState = STATE_ERROR;
             mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
             return;
         } catch (IllegalArgumentException ex) {
-            Log.w(TAG, "Unable to open content: " + mUri, ex);
+            LSLog.e( "Unable to open content: " + mUri);
             mCurrentState = STATE_ERROR;
             mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
             return;
@@ -213,7 +201,6 @@ public class VPlayer {
     private VideoPlayer.OnPlayerErrorListener mErrorListener =
             new VideoPlayer.OnPlayerErrorListener() {
                 public boolean onError(VideoPlayer mp, int framework_err, int impl_err) {
-                    Log.d(TAG, "Error: " + framework_err + "," + impl_err);
                     mCurrentState = STATE_ERROR;
                     if (mOnErrorListener != null) {
                         if (mOnErrorListener.onError(mMediaPlayer, framework_err, impl_err)) {
@@ -244,6 +231,9 @@ public class VPlayer {
      */
     public void setOnCompletionListener(VideoPlayer.OnPlayerCompletionListener l) {
         mOnCompletionListener = l;
+    }
+    public void setOnFrameUpateListener(VideoPlayer.OnPlayeFrameUpdateListener listener){
+        mOnPlayerFrameUpdateListener=listener;
     }
 
     /**
@@ -343,6 +333,12 @@ public class VPlayer {
         }
         return 0;
     }
+    public int setLanSongPosition() {
+        if (isInPlaybackState()) {
+            return (int) mMediaPlayer.setLanSongPosition();
+        }
+        return 0;
+    }
 
     public int getCurrentFramePosition() {
         if (isInPlaybackState()) {
@@ -353,16 +349,25 @@ public class VPlayer {
     public void seekTo(int msec) {
         if (isInPlaybackState()) {
             mMediaPlayer.seekTo(msec);
-            Log.i(TAG,"seek to  time is:"+msec);
             mSeekWhenPrepared = 0;
         } else {
             mSeekWhenPrepared = msec;
         }
     }
+
+    /**
+     * 如果视频旋转90或270度,这里等于高度;
+     * @return
+     */
     public int getVideoWidth()
     {
     	return mMediaPlayer!=null? mMediaPlayer.getVideoWidth():0;
     }
+
+    /**
+     * 如果视频旋转90或270度,这里等于宽度.;
+     * @return
+     */
     public int getVideoHeight()
     {
     	return mMediaPlayer!=null? mMediaPlayer.getVideoHeight():0;

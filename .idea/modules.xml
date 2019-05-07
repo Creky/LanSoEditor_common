@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LanSoEditor_common.iml" filepath="$PROJECT_DIR$/LanSoEditor_common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LanSongSDK/LanSongSDK.iml" filepath="$PROJECT_DIR$/LanSongSDK/LanSongSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LanSongSDK/LanSongSDK.iml" filepath="$PROJECT_DIR$/LanSongSDK/LanSongSDK.iml" />
     </modules>
   </component>
 </project>

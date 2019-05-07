@@ -5,9 +5,6 @@ import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.SurfaceTexture;
-import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -19,9 +16,10 @@ import android.os.ParcelFileDescriptor;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+
+import com.lansosdk.box.LSLog;
 
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
@@ -29,8 +27,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 
 
@@ -38,8 +34,6 @@ import java.util.Map;
  * 
  */
 public class VideoPlayer  {
-    private final static String TAG = "VideoPlayer";
-
     int MEDIA_INFO_UNKNOWN = 1;
     static int MEDIA_INFO_STARTED_AS_NEXT = 2;
     static  int MEDIA_INFO_VIDEO_RENDERING_START = 3;
@@ -83,6 +77,8 @@ public class VideoPlayer  {
     private static final int VIDEOEDIT_EVENT_COMPLETE=8001;
     
     protected static final int MEDIA_SET_VIDEO_SAR = 10001;
+
+    protected static final int LANSONG_FRAME_UPDATE=80001;
 
     //----------------------------------------
     // options
@@ -178,6 +174,10 @@ public class VideoPlayer  {
     public  interface OnPlayerInfoListener {
         boolean onInfo(VideoPlayer mp, int what, int extra);
     }
+
+    public  interface OnPlayeFrameUpdateListener {
+        void onFrameUpdate(VideoPlayer mp, int currentMs);
+    }
     
     private OnPlayerPreparedListener mOnPreparedListener;
     private OnPlayerCompletionListener mOnCompletionListener;
@@ -190,6 +190,7 @@ public class VideoPlayer  {
     private OnPlayerVideoSizeChangedListener mOnVideoSizeChangedListener;
     private OnPlayerErrorListener mOnErrorListener;
     private OnPlayerInfoListener mOnInfoListener;
+    private OnPlayeFrameUpdateListener mOnPlayeFrameUpdateListener;
 
     public final void setOnPreparedListener(OnPlayerPreparedListener listener) {
         mOnPreparedListener = listener;
@@ -211,7 +212,14 @@ public class VideoPlayer  {
     public final void setOnExactlySeekCompleteListener(OnPlayerExactlySeekCompleteListener listener) {
     	mOnExactlySeekCompleteListener = listener;
     }
-    
+
+    /**
+     * 当前即将要显示这一帧画面的时间戳; 监听
+     * @param listener
+     */
+    public void setOnPlayeFrameUpdateListener(OnPlayeFrameUpdateListener listener){
+        mOnPlayeFrameUpdateListener=listener;
+    }
 
     public final void setOnVideoSizeChangedListener(
             OnPlayerVideoSizeChangedListener listener) {
@@ -232,6 +240,11 @@ public class VideoPlayer  {
             mOnPreparedListener.onPrepared(this);
     }
 
+    protected final void notifyFrameUpdate(int ptsMs){
+        if(mOnPlayeFrameUpdateListener!=null){
+            mOnPlayeFrameUpdateListener.onFrameUpdate(this,ptsMs);
+        }
+    }
     protected final void notifyOnCompletion() {
         if (mOnCompletionListener != null)
             mOnCompletionListener.onCompletion(this);
@@ -311,7 +324,7 @@ public class VideoPlayer  {
     }
     public void setSurface(Surface surface) {
         if (mScreenOnWhilePlaying && surface != null) {
-            Log.w(TAG,
+            LSLog.e(
                     "setScreenOnWhilePlaying(true) is ineffective for Surface");
         }
         mSurfaceHolder = null;
@@ -489,8 +502,8 @@ public class VideoPlayer  {
     	_setSpeed(rate);
     }
     /**
-     * 获取当前画面位置,单位微秒;
-     * 
+     * 获取当前画面位置,单位毫秒
+     * ms
      * @return 
      */
     public long getCurrentFramePosition()
@@ -555,9 +568,6 @@ public class VideoPlayer  {
 
     public void setScreenOnWhilePlaying(boolean screenOn) {
         if (mScreenOnWhilePlaying != screenOn) {
-            if (screenOn && mSurfaceHolder == null) {
-                Log.w(TAG,"setScreenOnWhilePlaying(true) is ineffective without a SurfaceHolder");
-            }
             mScreenOnWhilePlaying = screenOn;
             updateSurfaceScreenOn();
         }
@@ -592,10 +602,18 @@ public class VideoPlayer  {
 
     private native void _setStreamSelected(int stream, boolean select);
 
+    /**
+     * 如果视频旋转90或270度,这里等于高度;
+     * @return
+     */
     public int getVideoWidth() {
         return mVideoWidth;
     }
 
+    /**
+     * 如果视频旋转90或270度,这里等于
+     * @return
+     */
     public int getVideoHeight() {
         return mVideoHeight;
     }
@@ -621,6 +639,8 @@ public class VideoPlayer  {
      */
     public native long getCurrentPosition();
 
+
+    public native long setLanSongPosition();
     
     /**
      * 视频的总长度, 单位毫秒.
@@ -747,10 +767,12 @@ public class VideoPlayer  {
         public void handleMessage(Message msg) {
             VideoPlayer player = mWeakPlayer.get();
             if (player == null || player.mNativeMediaPlayer == 0) {
-                Log.w(TAG,
+                LSLog.e(
                         "VideoPlayer went away with unhandled events");
                 return;
             }
+
+//            Log.i(TAG,"得到的msge is :"+ msg.what);
 
             switch (msg.what) {
             case MEDIA_PREPARED:
@@ -792,7 +814,7 @@ public class VideoPlayer  {
                 return;
 
             case MEDIA_ERROR:
-                Log.e(TAG, "Error (" + msg.arg1 + "," + msg.arg2 + ")");
+                LSLog.e( "Error (" + msg.arg1 + "," + msg.arg2 + ")");
                 if (!player.notifyOnError(msg.arg1, msg.arg2)) {
                     player.notifyOnCompletion();
                 }
@@ -800,7 +822,6 @@ public class VideoPlayer  {
                 return;
 
             case MEDIA_INFO:
-            	Log.i(TAG,"mediaInfo msg.arg1:"+msg.arg1);
             	if(msg.arg1==MEDIA_INFO_MEDIA_ACCURATE_SEEK_COMPLETE){
             		  player.notifyOnExactlySeekComplete();
             	}else{
@@ -820,9 +841,11 @@ public class VideoPlayer  {
                 player.notifyOnVideoSizeChanged(player.mVideoWidth, player.mVideoHeight,
                         player.mVideoSarNum, player.mVideoSarDen);
                 break;
-
+             case LANSONG_FRAME_UPDATE:
+                 player.notifyFrameUpdate(msg.arg1);
+                 break;
             default:
-                Log.e(TAG, "Unknown message type " + msg.what);
+                LSLog.e( "Unknown message type " + msg.what);
             }
         }
     }
