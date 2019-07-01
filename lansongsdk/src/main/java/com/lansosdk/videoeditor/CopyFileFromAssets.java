@@ -20,9 +20,9 @@ public class CopyFileFromAssets {
 	 * @return 返回 拷贝文件的目标路径
 	 */
 	public static String copyAssets(Context mContext, String assetsName) {
-		String filePath = LanSongFileUtil.TMP_DIR + "/" + assetsName;
+		String filePath = LanSongFileUtil.getPath() + "/" + assetsName;
 
-		File dir = new File(LanSongFileUtil.TMP_DIR);
+		File dir = new File(LanSongFileUtil.getPath());
 		// 如果目录不中存在，创建这个目录
 		if (!dir.exists())
 			dir.mkdirs();
@@ -87,7 +87,7 @@ public class CopyFileFromAssets {
 		String str2 = mContext.getResources().getString(resId);
 		String str3 = str2.substring(str2.lastIndexOf("/") + 1);
 
-		String filePath = LanSongFileUtil.TMP_DIR + "/" + str3;
+		String filePath = LanSongFileUtil.getPath() + "/" + str3;
 
 		try {
 			if (!(new File(filePath)).exists()) {

@@ -12,7 +12,6 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.lansosdk.box.LSLog;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -42,9 +41,7 @@ import static com.lansosdk.videoeditor.LanSongFileUtil.fileExist;
  */
 public class VideoEditor {
 
-    private static final String TAG = LSLog.TAG;
-
-    public static final String version="VideoEditor_20100101";
+    public static final String version="VideoEditor";
     /**
      * 使用软件编码的列表;
      */
@@ -198,7 +195,7 @@ public class VideoEditor {
             mEventHandler = new EventHandler(this, looper);
         } else {
             mEventHandler = null;
-            Log.w(TAG, "cannot get Looper handler. may be cannot receive video editor progress!!");
+            LSOLog.w( "cannot get Looper handler. may be cannot receive video editor progress!!");
         }
     }
     public onVideoEditorEncodeChangedListener mEncoderChangeListener=null;
@@ -238,7 +235,7 @@ public class VideoEditor {
         public void handleMessage(Message msg) {
             VideoEditor videoextract = mWeakExtract.get();
             if (videoextract == null) {
-                Log.e(TAG, "VideoEditor went away with unhandled events");
+                LSOLog.e(  "VideoEditor went away with unhandled events");
                 return;
             }
             switch (msg.what) {
@@ -261,10 +258,14 @@ public class VideoEditor {
         return execute(array);
     }
 
-    @SuppressWarnings("unused") /* Used from JNI */
-    private void postEventFromNative(int what, int arg1, int arg2) {
-        Log.i(TAG, "postEvent from native  is:" + what);
 
+    public void  postAVLogFromNative(String log){
+        LSOLog.e("native log:"+log);
+    }
+    @SuppressWarnings("unused")
+    /* Used from JNI */
+    private void postEventFromNative(int what, int arg1, int arg2) {
+        LSOLog.i("postEvent from native  is:" + what);
         if (mEventHandler != null) {
             Message msg = mEventHandler.obtainMessage(VIDEOEDITOR_HANDLER_PROGRESS);
             msg.arg1 = what;
@@ -287,7 +288,19 @@ public class VideoEditor {
      * @return
      */
     public static native String getSDKVersion();
+    /**
+     * 获取用到的是哪个指令集. armeabi-v7a 还是arm64-v8a
+     * @return
+     */
+    public static native String  getCurrentNativeABI();
 
+    public static native String nativeGetVideoDescription(String videoPath);
+
+    /**
+     * 获取SDK的类型, 是免费,是演示版, 还是基本技术支持,还是专业版;
+     * @return
+     */
+    public static native int getLanSongSDKType();
 
     /**
      * 执行成功,返回0, 失败返回错误码.
@@ -313,11 +326,11 @@ public class VideoEditor {
     public native void cancel();
 
     /**
-     * @param filelength
-     * @param channel
-     * @param sampleRate
-     * @param bitperSample
-     * @param outData
+     * @param filelength 采样点的总长度
+     * @param channel 通道号
+     * @param sampleRate 采样率;
+     * @param bitperSample 每个采样点有几个位, 默认单通道8位,双通道16位;
+     * @param outData 输出这个头文件
      */
     public static native void createWavHeader(int filelength, int channel, int sampleRate, int bitperSample, byte[] outData);
 
@@ -533,6 +546,43 @@ public class VideoEditor {
             return null;
         }
     }
+
+    /**
+     * mov=(H264+PCM)格式的视频, 转换为MP4;
+     * @param srcVideo
+     * @return
+     */
+    public String executePcmMovToMp4(String srcVideo) {
+        List<String> cmdList = new ArrayList<String>();
+
+        String dstPath=LanSongFileUtil.createMp4FileInBox();
+
+        cmdList.add("-i");
+        cmdList.add(srcVideo);
+
+        cmdList.add("-acodec");
+        cmdList.add("libfaac");
+        cmdList.add("-b:a");
+        cmdList.add("128000");
+
+
+        cmdList.add("-vcodec");
+        cmdList.add("copy");
+
+        cmdList.add("-y");
+        cmdList.add(dstPath);
+        String[] command = new String[cmdList.size()];
+        for (int i = 0; i < cmdList.size(); i++) {
+            command[i] = (String) cmdList.get(i);
+        }
+        int ret= executeVideoEditor(command);
+        if(ret==0){
+            return dstPath;
+        }else{
+            LanSongFileUtil.deleteFile(dstPath);
+            return null;
+        }
+    }
     /**
      * 两个音频文件延迟混合, 即把第二个音频延迟多长时间后, 与第一个音频混合.
      * 混合后的编码为aac格式的音频文件.
@@ -664,13 +714,25 @@ public class VideoEditor {
         }
         return null;
     }
+    public String executeGIF2MP4(String srcPath) {
+        if (fileExist(srcPath)) {
 
+            MediaInfo info = new MediaInfo(srcPath);
+            if (info.prepare()) {
+                List<String> cmdList = new ArrayList<String>();
+                cmdList.add("-i");
+                cmdList.add(srcPath);
+                return executeAutoSwitch(cmdList);
+            }
+        }
+        return null;
+    }
     /**
      * 分离mp4文件中的音频,并返回音频的路径,
      */
     public String executeGetAudioTrack(String srcMp4Path) {
         MediaInfo info = new MediaInfo(srcMp4Path);
-        if(info.prepare()){
+        if(info.prepare() && info.isHaveAudio()){
             String audioPath = null;
             if ("aac".equalsIgnoreCase(info.aCodecName)) {
                 audioPath = LanSongFileUtil.createFileInBox(".m4a");
@@ -684,6 +746,65 @@ public class VideoEditor {
                 cmdList.add(srcMp4Path);
                 cmdList.add("-acodec");
                 cmdList.add("copy");
+                cmdList.add("-vn");
+                cmdList.add("-y");
+                cmdList.add(audioPath);
+                String[] command = new String[cmdList.size()];
+                for (int i = 0; i < cmdList.size(); i++) {
+                    command[i] = (String) cmdList.get(i);
+                }
+                int ret= executeVideoEditor(command);
+                if(ret==0){
+                    return audioPath;
+                }else{
+                    LanSongFileUtil.deleteFile(audioPath);
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 从mp4文件中得到mp3;
+     * @param mp4Path 代码有音频的视频文件
+     * @param startS 可以对获取的mp3做裁剪, 开始时间,单位秒;如果不裁剪,填入-1;
+     * @param durationS 要裁剪的时长, 单位秒; 如果不裁剪,填入0
+     * @return 返回得到mp3的路径, 如果没有音频,则返回null
+     */
+    public String executeGetMp3FromVideo(String mp4Path,float startS, float durationS){
+        MediaInfo info = new MediaInfo(mp4Path);
+        if(info.prepare() && info.isHaveAudio()){
+            String audioPath  = LanSongFileUtil.createFileInBox(".mp3");
+
+            if (audioPath != null) {
+
+                List<String> cmdList = new ArrayList<String>();
+                cmdList.add("-i");
+                cmdList.add(mp4Path);
+
+                if(startS>=0){
+                    cmdList.add("-ss");
+                    cmdList.add(String.valueOf(startS));
+                }
+
+
+                if(durationS>0){
+                    cmdList.add("-t");
+                    cmdList.add(String.valueOf(durationS));
+                }
+
+                cmdList.add("-acodec");
+                cmdList.add("libmp3lame");
+                cmdList.add("-b:a");
+                cmdList.add("128000");
+
+                cmdList.add("-ac");
+                cmdList.add("2");
+
+                cmdList.add("-ar");
+                cmdList.add(String.valueOf(info.aSampleRate));
+
+
                 cmdList.add("-vn");
                 cmdList.add("-y");
                 cmdList.add(audioPath);
@@ -732,7 +853,7 @@ public class VideoEditor {
                 LanSongFileUtil.deleteFile(videoPath);
             }
         }
-        Log.e(TAG,"执行获取视频轨道 错误, !!!!");
+        LSOLog.e( "执行获取视频轨道 错误, !!!!");
         return null;
     }
 
@@ -1185,8 +1306,6 @@ public class VideoEditor {
             cmdList.add("-vsync");
             cmdList.add("vfr");
 
-            Log.i(TAG, " vsync is vfr");
-
             cmdList.add("-y");
 
             cmdList.add(dstPath);
@@ -1587,7 +1706,7 @@ public class VideoEditor {
                     w=info.getWidth();
                     h=info.getHeight();
                 }else if(info.getWidth()!=w || info.getHeight() !=h){
-                    Log.e(TAG,"视频拼接中, 有个视频的分辨率不等于其他分辨率");
+                    LSOLog.e( "视频拼接中, 有个视频的分辨率不等于其他分辨率");
                     return false;
                 }
             }else{
@@ -1610,6 +1729,10 @@ public class VideoEditor {
      */
     public String executeCropVideoFrame(String videoFile, int cropWidth, int cropHeight, int x, int y) {
         if (fileExist(videoFile)) {
+            if(isQiLinSoc()){
+                cropWidth=make16Before(cropWidth);
+                cropHeight=make16Before(cropHeight);
+            }
             String filter = String.format(Locale.getDefault(), "crop=%d:%d:%d:%d", cropWidth, cropHeight, x, y);
             List<String> cmdList = new ArrayList<String>();
 
@@ -1733,9 +1856,7 @@ public class VideoEditor {
 
         cmdList.add("-acodec");
         cmdList.add("copy");
-
         return executeAutoSwitch(cmdList);
-
     }
 
     /**
@@ -1757,6 +1878,10 @@ public class VideoEditor {
             cropWidth, int cropHeight, int overX, int overY)
     {
         if (fileExist(videoFile)) {
+            if(isQiLinSoc()){
+                cropWidth=make16Before(cropWidth);
+                cropHeight=make16Before(cropHeight);
+            }
             String filter = String.format(Locale.getDefault(), "[0:v]crop=%d:%d:%d:%d [crop];[crop][1:v] " +
                     "overlay=%d:%d", cropWidth, cropHeight, cropX, cropY, overX, overY);
 
@@ -1798,6 +1923,10 @@ public class VideoEditor {
     public String executeCutCrop(String videoFile, float startTimeS, float
             duationS, int cropX, int cropY, int cropWidth, int cropHeight) {
 
+        if(isQiLinSoc()){
+            cropWidth=make16Before(cropWidth);
+            cropHeight=make16Before(cropHeight);
+        }
         String filter = String.format(Locale.getDefault(), "crop=%d:%d:%d:%d", cropWidth, cropHeight, cropX, cropY);
 
         List<String> cmdList = new ArrayList<String>();
@@ -1840,6 +1969,10 @@ public class VideoEditor {
     public String executeCutCropOverlay(String videoFile, String pngPath, float startTimeS, float
             duationS, int cropX, int cropY, int cropWidth, int cropHeight, int overX, int overY) {
 
+        if(isQiLinSoc()){
+            cropWidth=make16Before(cropWidth);
+            cropHeight=make16Before(cropHeight);
+        }
         String filter = String.format(Locale.getDefault(), "[0:v]crop=%d:%d:%d:%d [crop];[crop][1:v] " +
                 "overlay=%d:%d", cropWidth, cropHeight, cropX, cropY, overX, overY);
 
@@ -1913,11 +2046,11 @@ public class VideoEditor {
                 int minWidth = info.vWidth + padX;
                 int minHeight = info.vHeight + padY;
                 if (minWidth > padWidth || minHeight > padHeight) {
-                    Log.e(TAG, "pad set position is error. min Width>pading width.or min height > padding height");
+                    LSOLog.e( "pad set position is error. min Width>pading width.or min height > padding height");
                     return null;  //失败.
                 }
             } else {
-                Log.e(TAG, "media info prepare is error!!!");
+                LSOLog.e("media info prepare is error!!!");
                 return null;
             }
 
@@ -2353,49 +2486,6 @@ public class VideoEditor {
     }
 
     /**
-     * 音频倒序，和视频倒序类似，把原来正常的声音，处理成从后向前的声音。　适合在搞怪的一些场合。
-     * <p>
-     * 注意：此处理会占用大量的内存，建议视频最好是480x480的分辨率, 并且不要过长，尽量在15秒内
-     * 注意：此处理会占用大量的内存，建议视频最好是480x480的分辨率, 并且不要过长，尽量在15秒内
-     *
-     * @param srcPath 源文件完整路径. 原文件可以是mp4的视频, 也可以是mp3或m4a的音频文件
-     * @return
-     */
-    public String executeAudioReverse(String srcPath) {
-        if (fileExist(srcPath)) {
-
-            String dstPath=LanSongFileUtil.createM4AFileInBox();
-            List<String> cmdList = new ArrayList<String>();
-
-            cmdList.add("-i");
-            cmdList.add(srcPath);
-
-            cmdList.add("-af");
-            cmdList.add("areverse");
-
-            cmdList.add("-c:v");
-            cmdList.add("copy");
-
-            cmdList.add("-y");
-            cmdList.add("drawpadDstPath");
-
-            String[] command = new String[cmdList.size()];
-            for (int i = 0; i < cmdList.size(); i++) {
-                command[i] = (String) cmdList.get(i);
-            }
-            int ret= executeVideoEditor(command);
-            if(ret==0){
-                return dstPath;
-            }else{
-                LanSongFileUtil.deleteFile(dstPath);
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
-
-    /**
      * 把一个mp4文件中的音频部分和视频都倒序播放。
      * <p>
      * 注意：此处理会占用大量的内存，建议视频最好是480x480的分辨率, 并且不要过长，尽量在15秒内
@@ -2420,7 +2510,6 @@ public class VideoEditor {
 
             cmdList.add("-af");
             cmdList.add("areverse");
-
 
             return executeAutoSwitch(cmdList);
         } else {
@@ -2544,7 +2633,7 @@ public class VideoEditor {
             }
 
             if(startX4>=0 && startY4>=0 && width4>0 && height4>0){
-               String filter4 = String.format(Locale.getDefault(), ";[d3]delogo=x=%d:y=%d:w=%d:h=%d",
+                String filter4 = String.format(Locale.getDefault(), ";[d3]delogo=x=%d:y=%d:w=%d:h=%d",
                         startX4,startY4,width4,height4);
                 filter+=filter4;
             }
@@ -2567,7 +2656,6 @@ public class VideoEditor {
             return null;
         }
     }
-    //----------增加压缩帧率
     /**
      * 对视频调整帧率, 码率
      * @param video
@@ -2616,6 +2704,10 @@ public class VideoEditor {
     public String executeCutCropAdjustFps(String videoFile, float startTimeS, float
             duationS, int cropX, int cropY, int cropWidth, int cropHeight,float framerate) {
 
+        if(isQiLinSoc()){
+            cropWidth=make16Before(cropWidth);
+            cropHeight=make16Before(cropHeight);
+        }
         String filter = String.format(Locale.getDefault(), "crop=%d:%d:%d:%d", cropWidth, cropHeight, cropX, cropY);
 
         List<String> cmdList = new ArrayList<String>();
@@ -2727,12 +2819,12 @@ public class VideoEditor {
     }
 
     /**
-     * 把视频转换为 gif
+     *
      * @param videoInput 输入视频
-     * @param inteval  对输入的视频取帧间隔.
+     * @param inteval  一秒钟取多少帧; 建议取8,10,15;
      * @param scaleW  取帧的同时是否要缩放, =0为不缩放
      * @param scaleH
-     * @param frameRate 在编码成gif文件的时候的帧率;
+     * @param frameRate 在编码成gif文件的时候的帧率; 建议和inteval一致
      * @return
      */
     public String executeConvertToGif(String videoInput, float inteval,int scaleW,int scaleH,float frameRate)
@@ -2790,7 +2882,7 @@ public class VideoEditor {
 
 
             cmdList.add("-filter_complex");
-            cmdList.add(String.valueOf(filter));
+            cmdList.add(filter);
 
             cmdList.add("-acodec");
             cmdList.add("copy");
@@ -2802,6 +2894,8 @@ public class VideoEditor {
 
     /**
      * 在视频的指定位置,指定时间内叠加一张图片
+     *
+     * 注意:如果你用这个给视频增加一张封面的话, 增加好后, 分享到QQ或微信或放到mac系统上, 显示的缩略图不一定是第一帧的画面.
      *
      * @param srcPath 源视频的完整路径
      * @param picPath 图片的完整路径,png/ jpg
@@ -2842,6 +2936,50 @@ public class VideoEditor {
     }
 
     /**
+     * 给gif动画增加图片(logo)
+     * @param gifFile gif的完整路径
+     * @param picturePath 图片的完整路径
+     * @param overX 图片左上角放到gif的开始X坐标.
+     * @param overY 图片左上角放到gif的开始Y坐标;
+     * @return
+     */
+    public String  executeGifOverLayPicture(String gifFile, String picturePath, int overX, int overY)
+    {
+        String filter = String.format(Locale.getDefault(), "overlay=%d:%d", overX, overY);
+
+        List<String> cmdList = new ArrayList<String>();
+
+
+        String gifPath=LanSongFileUtil.createGIFFileInBox();
+
+        cmdList.add("-i");
+        cmdList.add(gifFile);
+
+        cmdList.add("-i");
+        cmdList.add(picturePath);
+
+        cmdList.add("-filter_complex");
+        cmdList.add(filter);
+
+
+        cmdList.add("-y");
+        cmdList.add(gifPath);
+
+        String[] command = new String[cmdList.size()];
+        for (int i = 0; i < cmdList.size(); i++) {
+            command[i] = (String) cmdList.get(i);
+        }
+        int  ret= executeVideoEditor(command);
+        if(ret==0){
+            return gifPath;
+        }else{
+            LanSongFileUtil.deleteFile(gifPath);
+            return null;
+        }
+    }
+
+
+    /**
      * 给Mp4文件中增加一些描述文字.
      *
      * 比如您可以把一些对该视频的操作信息, 配置信息,服务器的说明信息等放到视频里面,和视频一起传输,
@@ -2855,19 +2993,19 @@ public class VideoEditor {
      */
     public String executeAddTextToMp4(String srcPath,String text)
     {
-       // ffmpeg -i d1.mp4 -metadata description="LanSon\"g \"Text"
+        // ffmpeg -i d1.mp4 -metadata description="LanSon\"g \"Text"
         //  -acodec copy -vcodec copy t1.mp4
         if(fileExist(srcPath) && text!=null) {
             String retPath = LanSongFileUtil.createMp4FileInBox();
 
             List<String> cmdList = new ArrayList<String>();
 
+
             cmdList.add("-i");
             cmdList.add(srcPath);
 
             cmdList.add("-metadata");
-            cmdList.add("description=");
-            cmdList.add(text);
+            cmdList.add("description="+text);
 
             cmdList.add("-acodec");
             cmdList.add("copy");
@@ -2888,6 +3026,7 @@ public class VideoEditor {
                 return null;
             }
         }else{
+            LSOLog.e("file is not exist. file:"+srcPath);
             return null;
         }
     }
@@ -2899,8 +3038,14 @@ public class VideoEditor {
      */
     public String executeGetTextFromMp4(String srcPath)
     {
-            //LSTODO. 暂时预留.
-         return null;
+
+        if(srcPath!=null && LanSongFileUtil.fileExist(srcPath)){
+            return nativeGetVideoDescription(srcPath);  //如果没有,则返回""空
+        }else {
+            LSOLog.e("executeGetTextFromMp4 error.file is:"+srcPath);
+            return null;
+        }
+
     }
     /**
      * 获取lansosdk的建议码率;
@@ -2930,6 +3075,7 @@ public class VideoEditor {
         int sugg = getSuggestBitRate(wxh);
         return bitrate < sugg ? sugg : bitrate;   //如果设置过来的码率小于建议码率,则返回建议码率,不然返回设置码率
     }
+
     /**
      * 用在编码方法中;
      */
@@ -2947,6 +3093,13 @@ public class VideoEditor {
         if(encodeBitRate>0){
             bitrate=encodeBitRate;
         }
+
+        if(getLanSongSDKType()==0){
+            LSOLog.w("当前运行的是免费版本, 将不支持硬件编码加速,处理速度可能变慢,请注意!");
+        }else if(getLanSongSDKType()==1){
+            LSOLog.w("这是我们的演示Demo,内部的视频处理有硬件编码加速功能.");
+        }
+
         String dstPath=LanSongFileUtil.createMp4FileInBox();
 
         if(isForceSoftWareDecoder || checkSoftDecoder()){
@@ -2982,20 +3135,19 @@ public class VideoEditor {
 
 
         if(isForceHWEncoder){
-
-            Log.d(TAG,"开始处理:硬解码+ 硬编码....");
+            LSOLog.d("开始处理:硬解码+ 硬编码....");
             ret=executeWithEncoder(cmdList, bitrate, dstPath, true);
         }else if(isForceSoftWareEncoder || useSoftWareEncoder || checkSoftEncoder()) {
 
-            Log.d(TAG,"开始处理:硬解码+ 软编码....");
+            LSOLog.d("开始处理:硬解码+ 软编码....");
             ret = executeWithEncoder(cmdList, bitrate, dstPath, false);
         }else{
 
-            Log.d(TAG,"开始处理:硬解码+ 硬编码....");
+            LSOLog.d("开始处理:硬解码+ 硬编码....");
             ret=executeWithEncoder(cmdList, bitrate, dstPath, true);
 
             if(ret!=0){
-                Log.d(TAG,"开始处理:硬解码+ 软编码....");
+                LSOLog.d("开始处理:硬解码+ 软编码....");
                 ret=executeWithEncoder(cmdList, bitrate, dstPath, false);
             }
         }
@@ -3011,7 +3163,7 @@ public class VideoEditor {
                 }
             }
             sendEncoderEnchange();
-            Log.d(TAG,"开始处理:软解码+ 软编码....");
+            LSOLog.d("开始处理:软解码+ 软编码....");
             ret=executeWithEncoder(cmdList, bitrate, dstPath, false);
         }
 
@@ -3054,13 +3206,12 @@ public class VideoEditor {
 
             if(isQiLinSoc()){
                 cmdList2.add("nv21");
-                setForceColorFormat(21);  //LSTODO, 没有全面测试...
+                setForceColorFormat(21);
             }else{
                 cmdList2.add("yuv420p");
             }
             cmdList2.add("-b:v");
             cmdList2.add(String.valueOf(bitrate));
-
         }else{
             cmdList2.add("libx264");
 
@@ -3102,13 +3253,13 @@ public class VideoEditor {
     public boolean checkSoftEncoder()
     {
         for(String item: qilinCpulist){
-            if(item.contains(Build.MODEL) && isSupportNV21ColorFormat()==false){
+            if(item.contains(Build.MODEL) && !isSupportNV21ColorFormat()){
                 isForceSoftWareEncoder=true;
                 return true;
             }
         }
 
-        if(Build.MODEL!=null && isSupportNV21ColorFormat()==false) {
+        if(Build.MODEL!=null && !isSupportNV21ColorFormat()) {
             if (Build.MODEL.contains("-AL00") || Build.MODEL.contains("-CL00")) {
                 isForceSoftWareEncoder = true;
                 return true;
@@ -3126,7 +3277,7 @@ public class VideoEditor {
             }
         }
         if(Build.MODEL!=null) {
-            if (Build.MODEL.contains("-AL00") || Build.MODEL.contains("-CL00")) {
+            if (Build.MODEL.contains("-AL") || Build.MODEL.contains("-CL00") || Build.MODEL.contains("-TL")) {
                 return true;
             }
         }
@@ -3189,6 +3340,13 @@ public class VideoEditor {
             return ((int)(value/16.0f +1)*16) ;
         }
     }
+    public static int make16Before(int value) {
+        if(value%16==0){
+            return value;
+        }else{
+            return ((int)(value/16.0f)*16) ;
+        }
+    }
 
 
     private static int checkCPUName() {
@@ -3199,7 +3357,6 @@ public class VideoEditor {
             BufferedReader localBufferedReader = new BufferedReader(fr, 8192);
             str2 = localBufferedReader.readLine();
             while (str2 != null) {
-//                Log.i("testCPU","->"+str2+"<-");
                 str2 = localBufferedReader.readLine();
                 if(str2.contains("SDM845")){  //845的平台;
 
@@ -3254,7 +3411,7 @@ public class VideoEditor {
         return null;
     }
     private static boolean selectColorFormat(MediaCodecInfo codecInfo,
-                                        String mimeType) {
+                                             String mimeType) {
         MediaCodecInfo.CodecCapabilities capabilities = codecInfo
                 .getCapabilitiesForType(mimeType);
         for (int i = 0; i < capabilities.colorFormats.length; i++) {
@@ -3272,23 +3429,14 @@ public class VideoEditor {
      * <p>
      * <p>
      * 采用的是软缩放的形式.
-     *
-     * @param videoFile
-     * @param startS
-     * @param durationS
-     * @param width     要缩放到的宽度 建议是16的倍数 ,
-     * @param height    要缩放到的高度, 建议是16的倍数
-     * @param framerate 帧率
-     * @param bitrate   码率
-     * @return
      */
-    public String executeCutVideoExactTest(String videoFile,
-                                           float startS,
-                                           float durationS,
-                                           int width,
-                                           int height,
-                                           float framerate,
-                                           int bitrate) {
+    public String executeCutScaleVideoExact(String videoFile,
+                                            float startS,
+                                            float durationS,
+                                            int width,
+                                            int height,
+                                            float framerate,
+                                            int bitrate) {
         if (fileExist(videoFile)) {
             List<String> cmdList = new ArrayList<String>();
 
@@ -3324,66 +3472,53 @@ public class VideoEditor {
         }
     }
 
-    public String testGetAudioM4a(String srcPath) {
-
-        String dstPath=LanSongFileUtil.createM4AFileInBox();
-
-        List<String> cmdList = new ArrayList<String>();
-        cmdList.add("-i");
-        cmdList.add(srcPath);
-        cmdList.add("-vn");
-        cmdList.add("-acodec");
-        cmdList.add("libfaac");
-        cmdList.add("-b:a");
-        cmdList.add("64000");
-        cmdList.add("-y");
-        cmdList.add(dstPath);
-
-        String[] command = new String[cmdList.size()];
-        for (int i = 0; i < cmdList.size(); i++) {
-            command[i] = (String) cmdList.get(i);
-        }
-       if(executeVideoEditor(command)==0){
-            return dstPath;
-       }else{
-            LSLog.e("executeGetAudioTrack error");
-            return null;
-       }
-    }
-    public int testVideoMergeAudio(String video, String audio,String dstPath) {
 
 
+    /**
+     *
+     *
+     * 命令是对的, 但可能是ffmpeg不支持loop源,当前暂时只有第一帧; 但4.1版本是可以的.
+     *    VideoEditor editor=new VideoEditor();
+     *         String  bgPic=SDCARD.file("a1280x720.jpg");
+     *         String  maskPic=SDCARD.file("a12801.png");
+     *         String  videoPath=SDCARD.file("TEST_720P_15s.mp4");
+     *         String  str=editor.executeAlphaMaskVideo(bgPic,videoPath,maskPic);
+     *         MediaInfo.checkFile(str);
+     */
+    public String executeAlphaMaskVideo(String bgImgPath,
+                                        String videoPath,
+                                        String maskImgPath) {
+        MediaInfo info=new MediaInfo(videoPath);
+        if (info.prepare()) {
             List<String> cmdList = new ArrayList<String>();
-            cmdList.add("-i");
-            cmdList.add(video);
+
+            //  ffmpeg -y -i TEST_720P_120s.mp4 -loop 1 -i a12801.png -i out.jpg -filter_complex
+            // "[1:v]alphaextract[alf];[0:v][alf]alphamerge[al2]; [2:v][al2] overlay=0:0" -c:v libx264 output21.mp4
+
+            String filter = "[1:v]alphaextract[alf];[0:v][alf]alphamerge[al2]; [2:v][al2] overlay=0:0";
+
 
             cmdList.add("-i");
-            cmdList.add(audio);
+            cmdList.add(videoPath);
 
+            cmdList.add("-loop");
+            cmdList.add("1");
 
-            cmdList.add("-map");
-            cmdList.add("0:v");
+            cmdList.add("-i");
+            cmdList.add(maskImgPath);
 
-            cmdList.add("-map");
-            cmdList.add("1:a");
+            cmdList.add("-i");
+            cmdList.add(bgImgPath);
 
-            cmdList.add("-vcodec");
-            cmdList.add("copy");
+            cmdList.add("-filter_complex");
+            cmdList.add(filter);
 
             cmdList.add("-acodec");
             cmdList.add("copy");
 
-            cmdList.add("-absf");
-            cmdList.add("aac_adtstoasc");
-
-
-            cmdList.add("-y");
-            cmdList.add(dstPath);
-            String[] command = new String[cmdList.size()];
-            for (int i = 0; i < cmdList.size(); i++) {
-                command[i] = (String) cmdList.get(i);
-            }
-            VideoEditor editor = new VideoEditor();
-            return editor.executeVideoEditor(command);
+            return executeAutoSwitch(cmdList);
+        } else {
+            return null;
+        }
     }
 }

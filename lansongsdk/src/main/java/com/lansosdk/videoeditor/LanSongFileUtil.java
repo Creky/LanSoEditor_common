@@ -3,10 +3,10 @@ package com.lansosdk.videoeditor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.lansosdk.box.LSLog;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -31,31 +31,36 @@ import java.util.Calendar;
  */
 public class LanSongFileUtil {
 
-    public static final String TAG = LSLog.TAG;
     public static final boolean VERBOSE = false;
     private static final Object mLock = new Object();
 
     //可以修改这个路径;
-    public static  String DEFAULT_DIR = "/sdcard/lansongBox/";
-    public static  String TMP_DIR =DEFAULT_DIR;
+
+    private static final String DEFAULT_DIR= Environment.getExternalStorageDirectory().getPath()+"/lansongBox/";
+    protected static  String FileCacheDir =DEFAULT_DIR;
     protected static String mTmpFileSubFix="";  //后缀,
     protected static String mTmpFilePreFix="";  //前缀;
 
 
-    public static void setTempDIR(String dir){
-        TMP_DIR=dir;
+    /**
+     * 外界不要调用
+     * @param dir
+     */
+    protected static void setTempDIR(String dir){
+        FileCacheDir =dir;
     }
+
     public static String getPath() {
-        File file = new File(TMP_DIR);
-        if (file.exists() == false) {
-            if(file.mkdir()==false){
-                TMP_DIR=DEFAULT_DIR;
-                if (file.exists() == false) {
+        File file = new File(FileCacheDir);
+        if (!file.exists()) {
+            if(!file.mkdir()){
+                FileCacheDir =DEFAULT_DIR;
+                if (!file.exists()) {
                     file.mkdir();
                 }
             }
         }
-        return TMP_DIR;
+        return FileCacheDir;
     }
 
     /**
@@ -78,20 +83,30 @@ public class LanSongFileUtil {
             return 0.0f;
         } else {
             File file = new File(filePath);
-            if (file.exists() == false) {
+            if (!file.exists()) {
                 return 0.0f;
             } else {
                 long size = file.length();
                 float size2 = (float) size / (1024f * 1024f);
 
                 int n = (int) (size2 * 100f);  //截断
-
-                Log.e("LSDelete", "---XXX--return : "+ (float) n / 100f);
                 return (float) n / 100f;
             }
         }
     }
 
+    public static long getFileSizeByte(String filePath) {
+        if (filePath == null) {
+            return 0;
+        } else {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                return 0;
+            } else {
+                return  file.length();
+            }
+        }
+    }
 
 
     /**
@@ -116,7 +131,7 @@ public class LanSongFileUtil {
             if (!d.exists())
                 d.mkdirs();
 
-            if (dirPath.endsWith("/") == false) {
+            if (!dirPath.endsWith("/")) {
                 dirPath += "/";
             }
 
@@ -129,7 +144,7 @@ public class LanSongFileUtil {
             name += String.valueOf(second);
             name += String.valueOf(millisecond);
             name+=mTmpFileSubFix;
-            if (suffix.startsWith(".") == false) {
+            if (!suffix.startsWith(".")) {
                 name += ".";
             }
             name += suffix;
@@ -144,7 +159,7 @@ public class LanSongFileUtil {
 
             String retPath=dirPath+name;
             File file = new File(retPath);
-            if (file.exists() == false) {
+            if (!file.exists()) {
                 try {
                     file.createNewFile();
                 } catch (IOException e) {
@@ -161,7 +176,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String createMp4FileInBox() {
-        return createFile(TMP_DIR, ".mp4");
+        return createFile(FileCacheDir, ".mp4");
     }
 
     /**
@@ -170,15 +185,15 @@ public class LanSongFileUtil {
      * @return
      */
     public static String createAACFileInBox() {
-        return createFile(TMP_DIR, ".aac");
+        return createFile(FileCacheDir, ".aac");
     }
 
     public static String createM4AFileInBox() {
-        return createFile(TMP_DIR, ".m4a");
+        return createFile(FileCacheDir, ".m4a");
     }
 
     public static String createMP3FileInBox() {
-        return createFile(TMP_DIR, ".mp3");
+        return createFile(FileCacheDir, ".mp3");
     }
 
 
@@ -187,7 +202,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String createWAVFileInBox() {
-        return createFile(TMP_DIR, ".wav");
+        return createFile(FileCacheDir, ".wav");
     }
 
     /**
@@ -195,7 +210,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String createGIFFileInBox() {
-        return createFile(TMP_DIR, ".gif");
+        return createFile(FileCacheDir, ".gif");
     }
 
     /**
@@ -205,7 +220,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String createFileInBox(String suffix) {
-        return createFile(TMP_DIR, suffix);
+        return createFile(FileCacheDir, suffix);
     }
 
     /**
@@ -214,7 +229,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String newMp4PathInBox() {
-        return newFilePath(TMP_DIR, ".mp4");
+        return newFilePath(FileCacheDir, ".mp4");
     }
 
     /**
@@ -281,7 +296,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static String copyFile(String srcPath, String suffix) {
-        String dstPath = LanSongFileUtil.createFile(TMP_DIR, suffix);
+        String dstPath = LanSongFileUtil.createFile(FileCacheDir, suffix);
 
 //			 	String cmd="/system/bin/cp ";
 //			 	cmd+=srcPath;
@@ -297,7 +312,7 @@ public class LanSongFileUtil {
         if (srcF.length() == dstF.length())
             return dstPath;
         else {
-            Log.e(TAG, "fileCopy is failed! " + srcPath + " src size:" + srcF.length() + " dst size:" + dstF.length());
+            LSOLog.e(  "fileCopy is failed! " + srcPath + " src size:" + srcF.length() + " dst size:" + dstF.length());
             LanSongFileUtil.deleteFile(dstPath);
             return null;
         }
@@ -305,8 +320,6 @@ public class LanSongFileUtil {
 
     /**
      * 删除指定的文件.
-     *
-     * @param path
      */
     public static void deleteFile(String path) {
         if (path != null) {
@@ -331,14 +344,17 @@ public class LanSongFileUtil {
     public static void  deleteNameFiles(String dir,String prefix,String subfix)
     {
         File file=new File(dir);
+        if(!file.exists()){
+            file.mkdirs();
+        }
         for (File item : file.listFiles()){
-            if(item.isDirectory()==false){
+            if(!item.isDirectory()){
                 String path=item.getAbsolutePath();
                 String name=LanSongFileUtil.getFileNameFromPath(path);
                 String subfix2=LanSongFileUtil.getFileSuffix(path);
 
                 if(prefix!=null && subfix!=null){
-                    if(name!=null && name.contains(prefix) && subfix2!=null && subfix2.equals(subfix)){
+                    if(name != null && name.contains(prefix) && subfix2.equals(subfix)){
                         LanSongFileUtil.deleteFile(path);
                     }
                 }else if(prefix!=null){
@@ -350,7 +366,7 @@ public class LanSongFileUtil {
                         LanSongFileUtil.deleteFile(path);
                     }
                 }else{
-                    LSLog.e("删除指定文件失败,您设置的参数都是null");
+                    LSOLog.e("删除指定文件失败,您设置的参数都是null");
                 }
             }
         }
@@ -410,7 +426,7 @@ public class LanSongFileUtil {
     public static boolean filesExist(String[] fileArray) {
 
         for (String file : fileArray) {
-            if (fileExist(file) == false)
+            if (!fileExist(file))
                 return false;
         }
         return true;
@@ -516,6 +532,13 @@ public class LanSongFileUtil {
         return dir.delete();
     }
 
+    /**
+     * 测试代码
+     * @param buffer
+     * @param width
+     * @param height
+     * @return
+     */
     public static String saveIntBuffer(IntBuffer buffer,int width,int height)
     {
         Bitmap bmp = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
@@ -546,6 +569,45 @@ public class LanSongFileUtil {
         }
         return "save Bitmap ERROR";
     }
+    public static String saveBitmap(Bitmap bmp, int i) {
+        if (bmp != null) {
+            try {
+                BufferedOutputStream bos;
+
+                String  name=String.format("%s/png%03d.png",getPath(),i);
+
+                bos = new BufferedOutputStream(new FileOutputStream(name));
+                bmp.compress(Bitmap.CompressFormat.PNG, 90, bos);
+                bos.close();
+                return name;
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            Log.i("saveBitmap", "error  bmp  is null");
+        }
+        return "save Bitmap ERROR";
+    }
+    public static String saveBitmap(Bitmap bmp,String dstPath) {
+
+
+        if (bmp != null) {
+            try {
+                BufferedOutputStream bos;
+                bos = new BufferedOutputStream(new FileOutputStream(dstPath));
+                bmp.compress(Bitmap.CompressFormat.PNG, 90, bos);
+                bos.close();
+                return dstPath;
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            Log.i("saveBitmap", "error  bmp  is null");
+        }
+        return "save Bitmap ERROR";
+    }
     /**
      * 读取图片的旋转的角度, 有些手机相册中的图片,有旋转角度,比如小米8拍的图片, 三星S9+拍的图片
      *  这里得到图片角度, 实际图片需要旋转这个角度后,才使用.
@@ -556,7 +618,7 @@ public class LanSongFileUtil {
     public static int getBitmapDegree(String path) {
         int degree = 0;
         if(path==null || !LanSongFileUtil.fileExist(path)){
-            LSLog.e("getBitmapDegree ERROR. file is null or not exist!");
+            LSOLog.e("getBitmapDegree ERROR. file is null or not exist!");
             return 0;
         }
         try {
@@ -592,7 +654,7 @@ public class LanSongFileUtil {
 //matrix.postTranslate(100, 100);
 //// 【裁减图像】
 //Bitmap.createBitmap(Bitmap source, int x, int y, int width, int height, Matrix m, boolean filter)/**
-     /** 旋转图片，使图片保持正确的方向。
+    /** 旋转图片，使图片保持正确的方向。
      *
      * @param bitmap  原始图片
      * @param degrees 原始图片的角度
@@ -603,16 +665,13 @@ public class LanSongFileUtil {
             return bitmap;
         }
         Matrix matrix = new Matrix();
-        matrix.setRotate(degrees, bitmap.getWidth() / 2, bitmap.getHeight() / 2);
+        matrix.setRotate(degrees, bitmap.getWidth() / 2f, bitmap.getHeight() / 2f);
         Bitmap bmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        bitmap.recycle();
         return bmp;
     }
 
 
     /**
-     * LSNEW
-     *
      * @param buffer
      * @param w
      * @param h
@@ -630,7 +689,7 @@ public class LanSongFileUtil {
      * @return
      */
     public static boolean deleteDefaultDir() {
-        File file=new File(TMP_DIR);
+        File file=new File(FileCacheDir);
         if (file.isDirectory()) {
             String[] children = file.list();
             for (int i = 0; i < children.length; i++) {

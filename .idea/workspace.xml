@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8df92bac-4510-4439-bacb-4107da2d3508" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LSOLog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -14,7 +20,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars____Users_sno_000temp_fromGithub_LanSoEditor_common_LanSongSDK_libs_lansongcommon_hx_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars____Users_sno_000temp_fromGithub_LanSoEditor_common_LanSongSDK_libs_lansongcommon_hx_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0_aar.xml" afterDir="false" />
@@ -26,138 +32,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LanSoEditor_common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LanSoEditor_common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/PermissionsManager.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/PermissionsManager.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/aac20s.aac" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/aac20s.aac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/aeDemo.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/aeDemo.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/dd1.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/dd1.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/dd2.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/dd2.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/dd3.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/dd3.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/dd4.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/dd4.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/douyin_effect.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/douyin_effect.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/hongdou.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/hongdou.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/hongdou20s.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/hongdou20s.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/honor30s2.m4a" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/honor30s2.m4a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/huainian.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/huainian.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/lantianbaiyun.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/lantianbaiyun.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/ping25s2.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/ping25s2.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/seek_exact.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/seek_exact.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/threeword.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/threeword.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/watermark.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/watermark.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CopyVideoAsyncTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CopyVideoAsyncTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CustomFunctionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CustomFunctionActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/AERecordFileHintActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/AERecordFileHintActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/ListAdvanceDemoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/ListAdvanceDemoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/PlayAdvanceDemoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/advanceSuggest/PlayAdvanceDemoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/noFree/ListNoFreeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/noFree/ListNoFreeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/noFree/VideoCompressActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/noFree/VideoCompressActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_function.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_function.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_archive.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_archive.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_back.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_back.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_block.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_block.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_gallery.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_menu_gallery.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/right_arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/right_arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/start.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/page.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/page_now.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/page_now.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/close_bn.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/close_bn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ffmpeg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ffmpeg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_backspace.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_backspace.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_delete.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_image_focus.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_image_focus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_light_off_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_light_off_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_ok.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_ok.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_start_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_start_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_start_btn_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_start_btn_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_switch_camera.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/video_record_switch_camera.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ls_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ls_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/circel_button_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circel_button_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/circle_button_blue_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_button_blue_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/function_item_btn_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/function_item_btn_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/main_item_btn_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_item_btn_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rdobtn_select_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rdobtn_select_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rect2_button_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rect2_button_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rect_button_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rect_button_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/start_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/start_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/video_record_start_btn_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/video_record_start_btn_selector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_player.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/advance_demo_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/advance_demo_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ae_play_aedemofile_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ae_play_aedemofile_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ae_recordfile_hint_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ae_recordfile_hint_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/busyness_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/busyness_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_function_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_function_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/demo_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/demo_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/file_explore_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/file_explore_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/file_explore_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/file_explore_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_no_free_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_no_free_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mediainfo_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mediainfo_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/more_video_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/more_video_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/only_videoplay_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/only_videoplay_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/player_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/player_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/start_layout3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/start_layout3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/test_cmd_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_cmd_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/test_cmd_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_cmd_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_compress_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_compress_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_edit_demo_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_edit_demo_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_record_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_record_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_scale_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_scale_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/viewpager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/viewpager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-v11/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-v11/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-v14/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-v14/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonFree.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/lansongsdk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/lansongsdk.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/libs/lansongcommon_hx.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/libs/lansongcommon_hx.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/androidTest/java/com/lansosdk/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/androidTest/java/com/lansosdk/ExampleInstrumentedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOCompressVideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOCompressVideo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOExtractFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOExtractFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOVideoScale.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOVideoScale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameCompletedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameCompletedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameErrorListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameProgressListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onExtractFrameProgressListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onVideoCompressCompletedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onVideoCompressCompletedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onVideoCompressProgressListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/onVideoCompressProgressListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/AudioEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/AudioEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/CopyFileFromAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/CopyFileFromAssets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSoEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSoEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongLogCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongLogCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/onVideoEditorEncodeChangedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/onVideoEditorEncodeChangedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/onVideoEditorProgressListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/onVideoEditorProgressListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/IMediaDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/IMediaDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/MeasureHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/MeasureHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/TextureRenderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/TextureRenderView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/VPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/VPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/VideoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoplayer/VideoPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongFileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongFileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongdisplay.so" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongdisplay.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongffmpeg.so" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongffmpeg.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongplayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/jniLibs/armeabi-v7a/libLanSongplayer.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lansongsdk/src/test/java/com/lansosdk/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lansongsdk/src/test/java/com/lansosdk/ExampleUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,46 +60,266 @@
       </state>
     </system>
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="41903069">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="887082337">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSoEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="70" column="145" selection-start-line="70" selection-start-column="145" selection-end-line="70" selection-end-column="145" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#863#864#0" expanded="true" />
+                <element signature="e#1021#1022#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#4028#4029#0" expanded="true" />
+                <element signature="e#4058#4059#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongLogCollector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoLayout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1872#1880#0" expanded="true" />
+                <element signature="e#3471#3479#0" expanded="true" />
+                <element signature="e#4632#4640#0" expanded="true" />
+                <element signature="e#6186#6194#0" expanded="true" />
+                <element signature="e#7626#7634#0" expanded="true" />
+                <element signature="e#9521#9529#0" expanded="true" />
+                <element signature="e#11244#11252#0" expanded="true" />
+                <element signature="e#13437#13445#0" expanded="true" />
+                <element signature="e#15385#15393#0" expanded="true" />
+                <element signature="e#17877#17885#0" expanded="true" />
+                <element signature="e#21032#21040#0" expanded="true" />
+                <element signature="e#23896#23904#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOVideoScale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/CopyFileFromAssets.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CopyVideoAsyncTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="456" column="45" selection-start-line="456" selection-start-column="45" selection-end-line="456" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-9613">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#3331#3332#0" expanded="true" />
+                <element signature="e#3368#3369#0" expanded="true" />
+                <element signature="e#6498#6499#0" expanded="true" />
+                <element signature="e#6535#6536#0" expanded="true" />
+                <element signature="e#6587#6588#0" expanded="true" />
+                <element signature="e#6630#6631#0" expanded="true" />
+                <element signature="e#6636#6663#0" expanded="true" />
+                <element signature="e#9025#9033#0" expanded="true" />
+                <element signature="e#10414#10422#0" expanded="true" />
+                <element signature="e#10953#10961#0" expanded="true" />
+                <element signature="e#12554#12562#0" expanded="true" />
+                <element signature="e#13931#13939#0" expanded="true" />
+                <element signature="e#15130#15138#0" expanded="true" />
+                <element signature="e#16355#16363#0" expanded="true" />
+                <element signature="e#17776#17784#0" expanded="true" />
+                <element signature="e#19415#19423#0" expanded="true" />
+                <element signature="e#19993#20001#0" expanded="true" />
+                <element signature="e#20776#20784#0" expanded="true" />
+                <element signature="e#22088#22096#0" expanded="true" />
+                <element signature="e#23738#23746#0" expanded="true" />
+                <element signature="e#24852#24860#0" expanded="true" />
+                <element signature="e#27115#27123#0" expanded="true" />
+                <element signature="e#29182#29190#0" expanded="true" />
+                <element signature="e#30740#30748#0" expanded="true" />
+                <element signature="e#31989#31997#0" expanded="true" />
+                <element signature="e#32984#32992#0" expanded="true" />
+                <element signature="e#34408#34416#0" expanded="true" />
+                <element signature="e#35597#35605#0" expanded="true" />
+                <element signature="e#37017#37025#0" expanded="true" />
+                <element signature="e#39293#39301#0" expanded="true" />
+                <element signature="e#40630#40638#0" expanded="true" />
+                <element signature="e#41919#41927#0" expanded="true" />
+                <element signature="e#42768#42776#0" expanded="true" />
+                <element signature="e#43801#43809#0" expanded="true" />
+                <element signature="e#45126#45134#0" expanded="true" />
+                <element signature="e#46162#46170#0" expanded="true" />
+                <element signature="e#46927#46935#0" expanded="true" />
+                <element signature="e#48169#48177#0" expanded="true" />
+                <element signature="e#50189#50197#0" expanded="true" />
+                <element signature="e#50877#50885#0" expanded="true" />
+                <element signature="e#51966#51974#0" expanded="true" />
+                <element signature="e#53071#53079#0" expanded="true" />
+                <element signature="e#54497#54505#0" expanded="true" />
+                <element signature="e#55717#55725#0" expanded="true" />
+                <element signature="e#57190#57198#0" expanded="true" />
+                <element signature="e#58247#58255#0" expanded="true" />
+                <element signature="e#59688#59696#0" expanded="true" />
+                <element signature="e#60498#60506#0" expanded="true" />
+                <element signature="e#61493#61501#0" expanded="true" />
+                <element signature="e#62990#62998#0" expanded="true" />
+                <element signature="e#63947#63955#0" expanded="true" />
+                <element signature="e#64912#64920#0" expanded="true" />
+                <element signature="e#65742#65750#0" expanded="true" />
+                <element signature="e#66546#66554#0" expanded="true" />
+                <element signature="e#67169#67177#0" expanded="true" />
+                <element signature="e#67799#67807#0" expanded="true" />
+                <element signature="e#68429#68437#0" expanded="true" />
+                <element signature="e#69089#69097#0" expanded="true" />
+                <element signature="e#70002#70010#0" expanded="true" />
+                <element signature="e#70877#70885#0" expanded="true" />
+                <element signature="e#71547#71555#0" expanded="true" />
+                <element signature="e#72570#72578#0" expanded="true" />
+                <element signature="e#75023#75031#0" expanded="true" />
+                <element signature="e#75707#75715#0" expanded="true" />
+                <element signature="e#76972#76980#0" expanded="true" />
+                <element signature="e#77933#77941#0" expanded="true" />
+                <element signature="e#79131#79139#0" expanded="true" />
+                <element signature="e#81315#81323#0" expanded="true" />
+                <element signature="e#82537#82545#0" expanded="true" />
+                <element signature="e#83636#83644#0" expanded="true" />
+                <element signature="e#84949#84957#0" expanded="true" />
+                <element signature="e#91071#91079#0" expanded="true" />
+                <element signature="e#97769#97777#0" expanded="true" />
+                <element signature="e#99365#99373#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongFileUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1212#1213#0" expanded="true" />
+                <element signature="e#1245#1246#0" expanded="true" />
+                <element signature="e#1679#1680#0" expanded="true" />
+                <element signature="e#1711#1712#0" expanded="true" />
+                <element signature="e#4620#4621#0" expanded="true" />
+                <element signature="e#4675#4676#0" expanded="true" />
+                <element signature="e#4797#4798#0" expanded="true" />
+                <element signature="e#4852#4853#0" expanded="true" />
+                <element signature="e#4901#4902#0" expanded="true" />
+                <element signature="e#4956#4957#0" expanded="true" />
+                <element signature="e#5005#5006#0" expanded="true" />
+                <element signature="e#5060#5061#0" expanded="true" />
+                <element signature="e#5164#5165#0" expanded="true" />
+                <element signature="e#5219#5220#0" expanded="true" />
+                <element signature="e#5320#5321#0" expanded="true" />
+                <element signature="e#5375#5376#0" expanded="true" />
+                <element signature="e#5549#5550#0" expanded="true" />
+                <element signature="e#5604#5605#0" expanded="true" />
+                <element signature="e#5724#5725#0" expanded="true" />
+                <element signature="e#5780#5781#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LSOLog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#539#540#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
+                <element signature="e#617#618#0" expanded="true" />
+                <element signature="e#652#653#0" expanded="true" />
+                <element signature="e#691#692#0" expanded="true" />
+                <element signature="e#726#727#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/AudioEditor.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongFileUtil.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LSOLog.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoEditor.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSoEditor.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoLayout.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOVideoScale.java" />
+        <option value="$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/CopyFileFromAssets.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CopyVideoAsyncTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/MainActivity.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="2560" />
-    <option name="height" value="1342" />
+    <option name="width" value="1440" />
+    <option name="height" value="819" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -221,7 +329,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,19 +337,91 @@
               <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
               <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lansosdk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lansosdk" type="462c0819:PsiDirectoryNode" />
+              <item name="videoeditor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="jniLibs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="jniLibs" type="462c0819:PsiDirectoryNode" />
+              <item name="arm64-v8a" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LanSoEditor_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LanSoEditor_common" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="lansongsdk" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="jniLibs" type="462c0819:PsiDirectoryNode" />
+              <item name="armeabi-v7a" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="TWGDU16A13001980" />
+    <property name="device.picker.selection" value="269cda8101217ece" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1561975967074" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -257,6 +437,7 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
@@ -330,10 +511,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1342" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="819" extended-state="6" />
     <layout>
+      <window_info id="Resources Explorer" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32883242" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.32832617" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -341,14 +523,14 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.640625" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.50284094" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32925835" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.57670456" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -356,14 +538,243 @@
       <window_info anchor="right" id="Palette&#9;" order="4" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/lansongsdk/libs/lansongcommon_hx.jar!/com/lansosdk/box/a.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/AudioEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="362" lean-forward="true" selection-start-line="362" selection-end-line="362" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#529#842#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#1420#1428#0" expanded="true" />
+            <element signature="e#3735#3743#0" expanded="true" />
+            <element signature="e#5289#5297#0" expanded="true" />
+            <element signature="e#6608#6616#0" expanded="true" />
+            <element signature="e#8041#8049#0" expanded="true" />
+            <element signature="e#9489#9497#0" expanded="true" />
+            <element signature="e#10963#10971#0" expanded="true" />
+            <element signature="e#12442#12450#0" expanded="true" />
+            <element signature="e#14056#14064#0" expanded="true" />
+            <element signature="e#15822#15830#0" expanded="true" />
+            <element signature="e#17013#17021#0" expanded="true" />
+            <element signature="e#18230#18238#0" expanded="true" />
+            <element signature="e#20706#20714#0" expanded="true" />
+            <element signature="e#23865#23873#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LSOLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9613">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#3331#3332#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#6498#6499#0" expanded="true" />
+            <element signature="e#6535#6536#0" expanded="true" />
+            <element signature="e#6587#6588#0" expanded="true" />
+            <element signature="e#6630#6631#0" expanded="true" />
+            <element signature="e#6636#6663#0" expanded="true" />
+            <element signature="e#9025#9033#0" expanded="true" />
+            <element signature="e#10414#10422#0" expanded="true" />
+            <element signature="e#10953#10961#0" expanded="true" />
+            <element signature="e#12554#12562#0" expanded="true" />
+            <element signature="e#13931#13939#0" expanded="true" />
+            <element signature="e#15130#15138#0" expanded="true" />
+            <element signature="e#16355#16363#0" expanded="true" />
+            <element signature="e#17776#17784#0" expanded="true" />
+            <element signature="e#19415#19423#0" expanded="true" />
+            <element signature="e#19993#20001#0" expanded="true" />
+            <element signature="e#20776#20784#0" expanded="true" />
+            <element signature="e#22088#22096#0" expanded="true" />
+            <element signature="e#23738#23746#0" expanded="true" />
+            <element signature="e#24852#24860#0" expanded="true" />
+            <element signature="e#27115#27123#0" expanded="true" />
+            <element signature="e#29182#29190#0" expanded="true" />
+            <element signature="e#30740#30748#0" expanded="true" />
+            <element signature="e#31989#31997#0" expanded="true" />
+            <element signature="e#32984#32992#0" expanded="true" />
+            <element signature="e#34408#34416#0" expanded="true" />
+            <element signature="e#35597#35605#0" expanded="true" />
+            <element signature="e#37017#37025#0" expanded="true" />
+            <element signature="e#39293#39301#0" expanded="true" />
+            <element signature="e#40630#40638#0" expanded="true" />
+            <element signature="e#41919#41927#0" expanded="true" />
+            <element signature="e#42768#42776#0" expanded="true" />
+            <element signature="e#43801#43809#0" expanded="true" />
+            <element signature="e#45126#45134#0" expanded="true" />
+            <element signature="e#46162#46170#0" expanded="true" />
+            <element signature="e#46927#46935#0" expanded="true" />
+            <element signature="e#48169#48177#0" expanded="true" />
+            <element signature="e#50189#50197#0" expanded="true" />
+            <element signature="e#50877#50885#0" expanded="true" />
+            <element signature="e#51966#51974#0" expanded="true" />
+            <element signature="e#53071#53079#0" expanded="true" />
+            <element signature="e#54497#54505#0" expanded="true" />
+            <element signature="e#55717#55725#0" expanded="true" />
+            <element signature="e#57190#57198#0" expanded="true" />
+            <element signature="e#58247#58255#0" expanded="true" />
+            <element signature="e#59688#59696#0" expanded="true" />
+            <element signature="e#60498#60506#0" expanded="true" />
+            <element signature="e#61493#61501#0" expanded="true" />
+            <element signature="e#62990#62998#0" expanded="true" />
+            <element signature="e#63947#63955#0" expanded="true" />
+            <element signature="e#64912#64920#0" expanded="true" />
+            <element signature="e#65742#65750#0" expanded="true" />
+            <element signature="e#66546#66554#0" expanded="true" />
+            <element signature="e#67169#67177#0" expanded="true" />
+            <element signature="e#67799#67807#0" expanded="true" />
+            <element signature="e#68429#68437#0" expanded="true" />
+            <element signature="e#69089#69097#0" expanded="true" />
+            <element signature="e#70002#70010#0" expanded="true" />
+            <element signature="e#70877#70885#0" expanded="true" />
+            <element signature="e#71547#71555#0" expanded="true" />
+            <element signature="e#72570#72578#0" expanded="true" />
+            <element signature="e#75023#75031#0" expanded="true" />
+            <element signature="e#75707#75715#0" expanded="true" />
+            <element signature="e#76972#76980#0" expanded="true" />
+            <element signature="e#77933#77941#0" expanded="true" />
+            <element signature="e#79131#79139#0" expanded="true" />
+            <element signature="e#81315#81323#0" expanded="true" />
+            <element signature="e#82537#82545#0" expanded="true" />
+            <element signature="e#83636#83644#0" expanded="true" />
+            <element signature="e#84949#84957#0" expanded="true" />
+            <element signature="e#91071#91079#0" expanded="true" />
+            <element signature="e#97769#97777#0" expanded="true" />
+            <element signature="e#99365#99373#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSoEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="70" column="145" selection-start-line="70" selection-start-column="145" selection-end-line="70" selection-end-column="145" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#4028#4029#0" expanded="true" />
+            <element signature="e#4058#4059#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongLogCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/VideoLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1872#1880#0" expanded="true" />
+            <element signature="e#3471#3479#0" expanded="true" />
+            <element signature="e#4632#4640#0" expanded="true" />
+            <element signature="e#6186#6194#0" expanded="true" />
+            <element signature="e#7626#7634#0" expanded="true" />
+            <element signature="e#9521#9529#0" expanded="true" />
+            <element signature="e#11244#11252#0" expanded="true" />
+            <element signature="e#13437#13445#0" expanded="true" />
+            <element signature="e#15385#15393#0" expanded="true" />
+            <element signature="e#17877#17885#0" expanded="true" />
+            <element signature="e#21032#21040#0" expanded="true" />
+            <element signature="e#23896#23904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/NoFree/LSOVideoScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/CopyFileFromAssets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/CopyVideoAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/commonDemo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="456" column="45" selection-start-line="456" selection-start-column="45" selection-end-line="456" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lansongsdk/src/main/java/com/lansosdk/videoeditor/LanSongFileUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1245#1246#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#1711#1712#0" expanded="true" />
+            <element signature="e#4620#4621#0" expanded="true" />
+            <element signature="e#4675#4676#0" expanded="true" />
+            <element signature="e#4797#4798#0" expanded="true" />
+            <element signature="e#4852#4853#0" expanded="true" />
+            <element signature="e#4901#4902#0" expanded="true" />
+            <element signature="e#4956#4957#0" expanded="true" />
+            <element signature="e#5005#5006#0" expanded="true" />
+            <element signature="e#5060#5061#0" expanded="true" />
+            <element signature="e#5164#5165#0" expanded="true" />
+            <element signature="e#5219#5220#0" expanded="true" />
+            <element signature="e#5320#5321#0" expanded="true" />
+            <element signature="e#5375#5376#0" expanded="true" />
+            <element signature="e#5549#5550#0" expanded="true" />
+            <element signature="e#5604#5605#0" expanded="true" />
+            <element signature="e#5724#5725#0" expanded="true" />
+            <element signature="e#5780#5781#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -62,7 +62,7 @@ public class CopyVideoAsyncTask extends AsyncTask<Object, Object, Boolean> {
             mProgressDialog = null;
         }
 
-        String str = LanSongFileUtil.TMP_DIR + fileName;
+        String str = LanSongFileUtil.getPath() + fileName;
         if (LanSongFileUtil.fileExist(str)) {
             Toast.makeText(mContext, "默认视频文件拷贝完成.视频样片路径:" + str, Toast.LENGTH_SHORT).show();
             if (tvHint != null)

@@ -1,6 +1,7 @@
 package com.lansosdk.videoeditor;
 
-import com.lansosdk.box.LSLog;
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ import static com.lansosdk.videoeditor.LanSongFileUtil.fileExist;
  * 使用方法和VideoEditor一样;
  */
 public class AudioEditor {
+    private final String TAG="LanSongSDK";
+
     private VideoEditor editor;
     // ffmpeg -f s16le -ar 44100 -ac 2 -i hongdou_44100_2.pcm -f s16le -ar 48000
 // -ac 2 hongdou_48000_2.pcm
@@ -31,7 +34,18 @@ public class AudioEditor {
         });
     }
 
-    public static String mergeAVDirectly(String audio, String video,boolean deleteVideo) {
+    /**
+     * 注意,这个类是直接把音频和视频合并在一起;
+     *
+     * 不检查音频和视频的长度,
+     * 不检查音频是否是aac编码;
+     * 需要您在外面清楚
+     * @param audio 音频或含有音频的视频的绝对路径
+     * @param video 视频文件;
+     * @param deleteVideo 处理后是否删除这个视频;
+     * @return
+     */
+    public static String mergeAudioNoCheck(String audio, String video, boolean deleteVideo) {
         MediaInfo info=new MediaInfo(audio);
         if(info.prepare() && info.isHaveAudio()){
             String retPath=LanSongFileUtil.createMp4FileInBox();
@@ -78,17 +92,10 @@ public class AudioEditor {
     }
 
     /**
-     * LSTODO增加静音举例.
-     *
-     * @param filelength
-     * @param channel
-     * @param sampleRate
-     * @param bitperSample
-     * @return
      */
-    public static byte[] getWavheader(int filelength, int channel, int sampleRate, int bitperSample) {
+    public static byte[] getWavheader(int filelength, int channel, int sampleRate) {
         byte header[] = new byte[44];
-        VideoEditor.createWavHeader(filelength, channel, sampleRate, bitperSample, header);
+        VideoEditor.createWavHeader(filelength, channel, sampleRate, 16, header);
         return header;
     }
 
@@ -110,7 +117,7 @@ public class AudioEditor {
      * @return 返回wav格式的数据, 或null;
      */
     public String executePcmConvertToWav(String srcPcm, int srcSample,
-                                              int srcChannel, int dstSample) {
+                                         int srcChannel, int dstSample) {
 
         //            ffmpeg -f s16le -ac 2 -ar 48000 -i huo_48000_2.pcm -ac 2 -ar 44100 huo.wav
         if(LanSongFileUtil.fileExist(srcPcm) && dstSample>0){
@@ -146,11 +153,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executePcmConvertSamplerate 失败, 请查看打印信息");
+                Log.e(TAG,"executePcmConvertSamplerate 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executePcmConvertSamplerate 执行失败, 文件不存在");
+            Log.e(TAG,"executePcmConvertSamplerate 执行失败, 文件不存在");
             return null;
         }
     }
@@ -194,11 +201,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertToWav 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertToWav 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertToWav 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertToWav 执行失败, 文件不存在");
             return null;
         }
     }
@@ -244,11 +251,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertToWav 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertToWav 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertToWav 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertToWav 执行失败, 文件不存在");
             return null;
         }
     }
@@ -293,11 +300,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertWavToMp3 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertWavToMp3 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertWavToMp3 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertWavToMp3 执行失败, 文件不存在");
             return null;
         }
     }
@@ -345,11 +352,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertWavToM4a 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertWavToM4a 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertWavToM4a 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertWavToM4a 执行失败, 文件不存在");
             return null;
         }
     }
@@ -399,11 +406,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertM4aToMp3 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertM4aToMp3 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertM4aToMp3 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertM4aToMp3 执行失败, 文件不存在");
             return null;
         }
     }
@@ -453,11 +460,11 @@ public class AudioEditor {
             if(ret==0){
                 return dstPath;
             }else{
-                LSLog.e("executeConvertMp3ToM4a 失败, 请查看打印信息");
+                Log.e(TAG,"executeConvertMp3ToM4a 失败, 请查看打印信息");
                 return null;
             }
         }else{
-            LSLog.e("executeConvertMp3ToM4a 执行失败, 文件不存在");
+            Log.e(TAG,"executeConvertMp3ToM4a 执行失败, 文件不存在");
             return null;
         }
     }
@@ -613,8 +620,6 @@ public class AudioEditor {
     }
     /**
      * 音频裁剪,截取音频文件中的一段.
-     * 需要注意到是: 尽量保持裁剪文件的后缀名和源音频的后缀名一致.
-     *
      * @param srcFile   源音频
      * @param startS    开始时间,单位是秒. 可以有小数
      * @param durationS 裁剪的时长.
@@ -625,7 +630,7 @@ public class AudioEditor {
 
             List<String> cmdList = new ArrayList<String>();
 
-            String dstFile=LanSongFileUtil.createFileInBox(LanSongFileUtil.getFileSuffix(srcFile));
+            String dstFile=LanSongFileUtil.createM4AFileInBox();
 
             cmdList.add("-i");
             cmdList.add(srcFile);
@@ -636,8 +641,24 @@ public class AudioEditor {
             cmdList.add("-t");
             cmdList.add(String.valueOf(durationS));
 
+            cmdList.add("-vn");
+//            cmdList.add("-acodec");
+//            cmdList.add("copy");
+
+            //2019-04-26 09:32:40 强制为faac编码;
             cmdList.add("-acodec");
-            cmdList.add("copy");
+            cmdList.add("libfaac");
+
+            cmdList.add("-ac");
+            cmdList.add("2");
+
+            cmdList.add("-ar");
+            cmdList.add("44100");
+
+            cmdList.add("-b:a");
+            cmdList.add("128000");
+
+
             cmdList.add("-y");
             cmdList.add(dstFile);
 
@@ -677,7 +698,7 @@ public class AudioEditor {
      * 把一个音乐合并到视频中;
      *
      *  [如果此方法无法满足您的方法或不够灵活,请使用音频容器: AudioPadExecute来操作]
-      * @param video  原视频
+     * @param video  原视频
      * @param audio 要合并的音频
      * @param volume1  在合并的时候, 原视频中的音频音量, 如果为0,则删除原有的视频声音;  范围是0--10.0f, 1.0为原音量,2.0是放大一倍.0.5是降低一倍;
      * @param volume2  合并时的, 音频音量; 范围是0--10.0f

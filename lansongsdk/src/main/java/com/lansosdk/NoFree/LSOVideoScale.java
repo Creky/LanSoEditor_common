@@ -130,7 +130,7 @@ public class LSOVideoScale {
                     if(compressCompletedListener!=null){
 
                         if (LanSongFileUtil.fileExist(dstVideo) && mediaInfo.isHaveAudio()) {
-                            String retPath = AudioEditor.mergeAVDirectly(srcVideo, dstVideo,true);
+                            String retPath = AudioEditor.mergeAudioNoCheck(srcVideo, dstVideo,true);
                             compressCompletedListener.onCompleted(retPath);
                         }else{
                             compressCompletedListener.onCompleted(dstVideo);

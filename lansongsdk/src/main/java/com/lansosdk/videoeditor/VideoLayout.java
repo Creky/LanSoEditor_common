@@ -1,8 +1,5 @@
 package com.lansosdk.videoeditor;
 
-import android.util.Log;
-
-import com.lansosdk.box.LSLog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,8 +23,6 @@ import java.util.Locale;
 public class VideoLayout extends VideoEditor {
 
     //2018年5月29日16:52:43增加音频;
-
-    private static final String TAG = LSLog.TAG;
 
     /**
      * 是否使用软件解码器
@@ -138,7 +133,6 @@ public class VideoLayout extends VideoEditor {
 
         return doVideoLayout(cmdList,outW,outH);
     }
-
     /**
      * 3个视频合并
      * 参数, 布局原理 见上面;
@@ -705,7 +699,7 @@ public class VideoLayout extends VideoEditor {
             }
         }
         if(retDuration==0){
-            Log.e(TAG,"VideoLayout 没有检测到输入视频的长度, 默认设置为15s");
+            LSOLog.e("VideoLayout 没有检测到输入视频的长度, 默认设置为15s");
             retDuration=15;
         }
         return retDuration;
@@ -745,11 +739,10 @@ public class VideoLayout extends VideoEditor {
     }
     //-------------------------
     public static void test() {
-        long time=System.currentTimeMillis();
-
         VideoLayout layout=new VideoLayout();
+
         VideoLayoutParam p1= new VideoLayoutParam();
-        p1.video="/sdcard/d3.mp4";
+        p1.video="/sdcard/p1920x1080.jpg";
         p1.x=0;
         p1.y=0;
         p1.scaleW=720;
@@ -757,14 +750,15 @@ public class VideoLayout extends VideoEditor {
 
         VideoLayoutParam p2= new VideoLayoutParam();
         p2.video="/sdcard/d2.mp4";
-        p2.x=0;
-        p2.y=0;
-        p2.scaleW=544/2;
+        p2.x=300;
+        p2.y=300;
+        p2.scaleW=523;
         p2.scaleH=960/2;
 
 
-        String dstPath=layout.executeLayout2Video(720,720,"/sdcard/d1.mp4",0,0,"/sdcard/d2.mp4",0,0);
+        String dstPath=layout.executeLayoutScale2Video(1280,720,p1,p2);
 
-        Log.i(TAG,"测试video Layout  耗时:"+(System.currentTimeMillis() - time)+ "dst:"+dstPath);
+        MediaInfo.checkFile(dstPath);
+
     }
 }
