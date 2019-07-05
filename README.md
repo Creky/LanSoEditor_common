@@ -72,6 +72,19 @@
 	在您工程的settting.gradle中增加: ,'LanSongSDK' ; 并在app.gradle中 增加: implementation project(':LanSongSDK')
 	
 ```
+- 混淆代码
+```
+-keep public class com.lansosdk.videoeditor.** {
+<fields>;
+<methods>;
+}。
+-keep public class com.lansosdk.videoplayer.** {
+<fields>;
+<methods>;
+}。
+-keep class com.lansosdk.box.**{*;}
+我们的jar文件， 已经在sdk提供给您的时候， 做过混淆操作，请勿再次混淆。
+```
 
 
 # 增值服务包括:
